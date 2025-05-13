@@ -314,7 +314,7 @@ section {
 
 .image-border {
     position: absolute;
-    width: 100%;
+    width: 70%;
     height: 100%;
     border: 5px solid var(--primary-color);
     border-radius: 10px;
