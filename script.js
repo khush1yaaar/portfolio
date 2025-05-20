@@ -73,6 +73,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Floating Tech Icons Animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const techIcons = document.querySelectorAll('.tech-icons i');
+        
+        // Make icons move with scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            techIcons.forEach((icon, index) => {
+                // Different movement for each icon
+                const speed = 0.1 + (index * 0.02);
+                const yPos = -scrollPosition * speed;
+                
+                // Apply the transformation
+                icon.style.transform = `translateY(${yPos}px) rotate(${scrollPosition * 0.1}deg)`;
+            });
+        });
+        
+        // Initial slight animation on load
+        techIcons.forEach(icon => {
+            // Random slight movement
+            const xMove = (Math.random() * 20) - 10;
+            const yMove = (Math.random() * 20) - 10;
+            icon.style.transform = `translate(${xMove}px, ${yMove}px)`;
+        });
+    });
+
     // Animate hero shapes on scroll
     const heroShapes = document.querySelectorAll('.shape');
     
