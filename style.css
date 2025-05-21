@@ -467,6 +467,7 @@ section {
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -476,20 +477,13 @@ section {
 
 .project-image {
     width: 100%;
-    height: 250px; /* Fixed height for all images */
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f5f5f5; /* Fallback background */
 }
 
 .project-image img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Show full image without cropping */
+    width: 100%;
+    height: auto; /* Natural image height */
+    display: block;
     transition: transform 0.5s ease;
 }
 
@@ -501,7 +495,6 @@ section {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Takes remaining space */
 }
 
 .project-content h3 {
@@ -515,7 +508,7 @@ section {
     color: var(--dark-gray);
     margin-bottom: 20px;
     line-height: 1.6;
-    /* No flex property here - takes only needed space */
+    /* Takes only needed space */
 }
 
 .project-tech {
@@ -568,11 +561,8 @@ section {
     .project-card {
         min-width: 280px;
     }
-    
-    .project-image {
-        height: 200px;
-    }
 }
+
 
 /* Contact Section */
 .contact-container {
