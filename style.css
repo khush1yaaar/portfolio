@@ -32,20 +32,6 @@ body {
     position: relative;
 }
 
-/* Custom Cursor */
-.cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    pointer-events: none;
-    mix-blend-mode: difference;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-}
-
 /* Navigation */
 nav {
     position: fixed;
@@ -153,12 +139,14 @@ nav.scrolled {
     font-size: 4rem;
     margin-bottom: 20px;
     line-height: 1.2;
+    white-space: normal;
 }
 
 .hero-title .name {
     color: var(--primary-color);
     position: relative;
     display: inline-block;
+    white-space: normal;
 }
 
 .hero-title .name::after {
@@ -446,28 +434,24 @@ section {
 
 /* Projects Section */
 .projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    columns: 3;
+    column-gap: 30px;
     padding: 50px;
-    gap: 30px;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .project-card {
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
+    display: inline-block; /* Crucial for masonry */
+    width: 100%;
     background-color: var(--white);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    margin-bottom: 30px;
+    break-inside: avoid; /* Prevents card splitting between columns */
 }
 
 .project-card:hover {
@@ -553,16 +537,18 @@ section {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .projects-container {
-        padding: 30px 20px;
-    }
-    
-    .project-card {
-        min-width: 280px;
+        columns: 2;
     }
 }
 
+@media (max-width: 768px) {
+    .projects-container {
+        columns: 1;
+        padding: 30px 20px;
+    }
+}
 
 /* Contact Section */
 .contact-container {
@@ -620,72 +606,33 @@ section {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background-color: var(--light-color);
     border-radius: 50%;
-    color: var(--dark-color);
     font-size: 1.5rem;
     transition: all 0.3s ease;
+    background-color: white;
+}
+
+.social-links a img,
+.social-links a i {
+    display: block;
+    width: 28px; /* Match your icon sizes */
+    height: 28px;;
 }
 
 .social-links a:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    background-color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+.social-links a i.fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; 
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-}
-
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
 
 /* Footer */
 footer {
